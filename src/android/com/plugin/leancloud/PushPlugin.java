@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVInstallation;
-import com.avos.avoscloud.AVOSCloud;
-import com.google.android.gcm.GCMRegistrar;
+import com.avos.avoscloud.PushService;
+import com.avos.avoscloud.SaveCallback;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -23,121 +23,141 @@ import java.util.Iterator;
  */
 
 public class PushPlugin extends CordovaPlugin {
-	public static final String TAG = "PushPlugin";
+    public static final String TAG = "PushPlugin";
 
-	public static final String REGISTER = "register";
-	public static final String UNREGISTER = "unregister";
-	public static final String EXIT = "exit";
+    public static final String REGISTER = "register";
+    public static final String UNREGISTER = "unregister";
+    public static final String EXIT = "exit";
 
-	private static CordovaWebView gWebView;
-	private static String gECB;
-//	private static String gSenderID;
-	private static Bundle gCachedExtras = null;
+    private static CordovaWebView gWebView;
+    private static String gECB;
+    //	private static String gSenderID;
+    private static Bundle gCachedExtras = null;
     private static boolean gForeground = false;
 
-	/**
-	 * Gets the application context from cordova's main activity.
-	 * @return the application context
-	 */
-	private Context getApplicationContext() {
-		return this.cordova.getActivity().getApplicationContext();
-	}
+    /**
+     * Gets the application context from cordova's main activity.
+     *
+     * @return the application context
+     */
+    private Context getApplicationContext() {
+        return this.cordova.getActivity().getApplicationContext();
+    }
 
     @Override
     protected void pluginInitialize() {
         super.pluginInitialize();
-        AVOSCloud.initialize(this.getApplicationContext(), "oiaphpevlgw1av6l1ktbvdwuw733363u3p5vanniztaou9hm",
-                "dujzxfpf40fkn7hcz2q14570ekb5u9e6qwpcjuhvv4omenes");
+        PushService.setDefaultPushCallback(this.getApplicationContext(), PushHandlerActivity.class);
     }
 
     @Override
-	public boolean execute(String action, JSONArray data, CallbackContext callbackContext) {
+    public boolean execute(String action, JSONArray data, final CallbackContext callbackContext) {
 
-		boolean result = false;
+        boolean result = false;
 
-		Log.v(TAG, "execute: action=" + action);
+        Log.w(TAG, "execute: action=" + action);
 
-		if (REGISTER.equals(action)) {
+        if (REGISTER.equals(action)) {
 
-			Log.v(TAG, "execute: data=" + data.toString());
+            Log.w(TAG, "execute: data=" + data.toString());
 
-			try {
-				JSONObject jo = data.getJSONObject(0);
+            try {
+                JSONObject jo = data.getJSONObject(0);
 
-				gWebView = this.webView;
-				Log.v(TAG, "execute: jo=" + jo.toString());
+                gWebView = this.webView;
+//                Log.w(TAG, "execute: jo=" + jo.toString());
 
-				gECB = (String) jo.get("ecb");
+                gECB = (String) jo.get("ecb");
 //				gSenderID = (String) jo.get("senderID");
 
-//				Log.v(TAG, "execute: ECB=" + gECB + " senderID=" + gSenderID);
-				Log.v(TAG, "execute: ECB=" + gECB);
+//				Log.w(TAG, "execute: ECB=" + gECB + " senderID=" + gSenderID);
+//                Log.w(TAG, "execute: ECB=" + gECB);
 
 //				GCMRegistrar.register(getApplicationContext(), gSenderID);
-                try {
-                    AVInstallation.getCurrentInstallation().save();
-                    result = true;
-                    callbackContext.success(AVInstallation.getCurrentInstallation().getInstallationId());
-                } catch (AVException e) {
-                    Log.e(TAG, "Register Exception: " + e.getMessage());
-                }
+//                try {
+                Log.i(TAG, "save installation id");
+                AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(AVException e) {
+                        if (e == null) {
+                            AVInstallation.getCurrentInstallation().getObjectId();
+                            JSONObject result = new JSONObject();
+                            try {
+                                result.put("object_id", AVInstallation.getCurrentInstallation().getObjectId());
+                                result.put("device_id", AVInstallation.getCurrentInstallation().getInstallationId());
+                                Log.w(TAG, "installation id = " + AVInstallation.getCurrentInstallation().getInstallationId());
+                                callbackContext.success(result);
+                            } catch (JSONException e1) {
+                                Log.e(TAG, "generate registration result error ", e1);
+                                callbackContext.error(e1.getMessage());
+                            }
+                        } else {
+                            Log.e(TAG, "registration error", e);
+                            callbackContext.error(e.getMessage());
+                        }
+                    }
+                });
+                result = true;
+//                } catch (AVException e) {
+//                    Log.e(TAG, "Register Exception: " + e.getMessage());
+//                }
 //                result = true;
 //                callbackContext.success();
             } catch (JSONException e) {
-				Log.e(TAG, "execute: Got JSON Exception " + e.getMessage());
-				result = false;
-				callbackContext.error(e.getMessage());
-			}
+                Log.e(TAG, "execute: Got JSON Exception " + e.getMessage());
+                result = false;
+                callbackContext.error(e.getMessage());
+            }
 
-			if ( gCachedExtras != null) {
-				Log.v(TAG, "sending cached extras");
-				sendExtras(gCachedExtras);
-				gCachedExtras = null;
-			}
+            if (gCachedExtras != null) {
+                Log.w(TAG, "sending cached extras");
+                sendExtras(gCachedExtras);
+                gCachedExtras = null;
+            }
 
-		} else if (UNREGISTER.equals(action)) {
+        } else if (UNREGISTER.equals(action)) {
 
 //			GCMRegistrar.unregister(getApplicationContext());
 
-			Log.v(TAG, "UNREGISTER");
-			result = true;
-			callbackContext.success();
-		} else {
-			result = false;
-			Log.e(TAG, "Invalid action : " + action);
-			callbackContext.error("Invalid action : " + action);
-		}
+            Log.w(TAG, "UNREGISTER");
+            result = true;
+            callbackContext.success();
+        } else {
+            result = false;
+            Log.e(TAG, "Invalid action : " + action);
+            callbackContext.error("Invalid action : " + action);
+        }
 
-		return result;
-	}
+        return result;
+    }
 
-	/*
-	 * Sends a json object to the client as parameter to a method which is defined in gECB.
-	 */
-	public static void sendJavascript(JSONObject _json) {
-		String _d = "javascript:" + gECB + "(" + _json.toString() + ")";
-		Log.v(TAG, "sendJavascript: " + _d);
+    /*
+     * Sends a json object to the client as parameter to a method which is defined in gECB.
+     */
+    public static void sendJavascript(JSONObject _json) {
+        String _d = "javascript:" + gECB + "(" + _json.toString() + ")";
+        Log.i(TAG, "sendJavascript: " + _d);
 
-		if (gECB != null && gWebView != null) {
-			gWebView.sendJavascript(_d);
-		}
-	}
+        if (gECB != null && gWebView != null) {
+            gWebView.sendJavascript(_d);
+        }
+    }
 
-	/*
-	 * Sends the pushbundle extras to the client application.
-	 * If the client application isn't currently active, it is cached for later processing.
-	 */
-	public static void sendExtras(Bundle extras)
-	{
-		if (extras != null) {
-			if (gECB != null && gWebView != null) {
-				sendJavascript(convertBundleToJson(extras));
-			} else {
-				Log.v(TAG, "sendExtras: caching extras to send at a later time.");
-				gCachedExtras = extras;
-			}
-		}
-	}
+    /*
+     * Sends the pushbundle extras to the client application.
+     * If the client application isn't currently active, it is cached for later processing.
+     */
+    public static void sendExtras(Bundle extras) {
+        Log.i(TAG, "sendExtras: " + extras);
+        if (extras != null) {
+            if (gECB != null && gWebView != null) {
+                sendJavascript(convertBundleToJson(extras));
+            } else {
+                Log.i(TAG, "sendExtras: caching extras to send at a later time.");
+                gCachedExtras = extras;
+            }
+        }
+    }
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -145,7 +165,7 @@ public class PushPlugin extends CordovaPlugin {
         gForeground = true;
     }
 
-	@Override
+    @Override
     public void onPause(boolean multitasking) {
         super.onPause(multitasking);
         gForeground = false;
@@ -163,101 +183,78 @@ public class PushPlugin extends CordovaPlugin {
     public void onDestroy() {
         super.onDestroy();
         gForeground = false;
-		gECB = null;
-		gWebView = null;
+        gECB = null;
+        gWebView = null;
     }
 
     /*
      * serializes a bundle to JSON.
      */
-    private static JSONObject convertBundleToJson(Bundle extras)
-    {
-		try
-		{
-			JSONObject json;
-			json = new JSONObject().put("event", "message");
+    private static JSONObject convertBundleToJson(Bundle extras) {
+        try {
+            JSONObject json;
+            json = new JSONObject().put("event", "message");
 
-			JSONObject jsondata = new JSONObject();
-			Iterator<String> it = extras.keySet().iterator();
-			while (it.hasNext())
-			{
-				String key = it.next();
-				Object value = extras.get(key);
+            JSONObject jsondata = new JSONObject();
+            Iterator<String> it = extras.keySet().iterator();
+            while (it.hasNext()) {
+                String key = it.next();
+                Object value = extras.get(key);
 
-				// System data from Android
-				if (key.equals("from") || key.equals("collapse_key"))
-				{
-					json.put(key, value);
-				}
-				else if (key.equals("foreground"))
-				{
-					json.put(key, extras.getBoolean("foreground"));
-				}
-				else if (key.equals("coldstart"))
-				{
-					json.put(key, extras.getBoolean("coldstart"));
-				}
-				else
-				{
-					// Maintain backwards compatibility
-					if (key.equals("message") || key.equals("msgcnt") || key.equals("soundname"))
-					{
-						json.put(key, value);
-					}
+                // System data from Android
+                if (key.equals("from") || key.equals("collapse_key")) {
+                    json.put(key, value);
+                } else if (key.equals("foreground")) {
+                    json.put(key, extras.getBoolean("foreground"));
+                } else if (key.equals("coldstart")) {
+                    json.put(key, extras.getBoolean("coldstart"));
+                } else {
+                    // Maintain backwards compatibility
+                    if (key.equals("message") || key.equals("msgcnt") || key.equals("soundname")) {
+                        json.put(key, value);
+                    }
 
-					if ( value instanceof String ) {
-					// Try to figure out if the value is another JSON object
+                    if (value instanceof String) {
+                        // Try to figure out if the value is another JSON object
 
-						String strValue = (String)value;
-						if (strValue.startsWith("{")) {
-							try {
-								JSONObject json2 = new JSONObject(strValue);
-								jsondata.put(key, json2);
-							}
-							catch (Exception e) {
-								jsondata.put(key, value);
-							}
-							// Try to figure out if the value is another JSON array
-						}
-						else if (strValue.startsWith("["))
-						{
-							try
-							{
-								JSONArray json2 = new JSONArray(strValue);
-								jsondata.put(key, json2);
-							}
-							catch (Exception e)
-							{
-								jsondata.put(key, value);
-							}
-						}
-						else
-						{
-							jsondata.put(key, value);
-						}
-					}
-				}
-			} // while
-			json.put("payload", jsondata);
+                        String strValue = (String) value;
+                        if (strValue.startsWith("{")) {
+                            try {
+                                JSONObject json2 = new JSONObject(strValue);
+                                jsondata.put(key, json2);
+                            } catch (Exception e) {
+                                jsondata.put(key, value);
+                            }
+                            // Try to figure out if the value is another JSON array
+                        } else if (strValue.startsWith("[")) {
+                            try {
+                                JSONArray json2 = new JSONArray(strValue);
+                                jsondata.put(key, json2);
+                            } catch (Exception e) {
+                                jsondata.put(key, value);
+                            }
+                        } else {
+                            jsondata.put(key, value);
+                        }
+                    }
+                }
+            } // while
+            json.put("payload", jsondata);
 
-			Log.v(TAG, "extrasToJSON: " + json.toString());
+            Log.w(TAG, "extrasToJSON: " + json.toString());
 
-			return json;
-		}
-		catch( JSONException e)
-		{
-			Log.e(TAG, "extrasToJSON: JSON exception");
-		}
-		return null;
+            return json;
+        } catch (JSONException e) {
+            Log.e(TAG, "extrasToJSON: JSON exception");
+        }
+        return null;
     }
 
-    public static boolean isInForeground()
-    {
-      return gForeground;
+    public static boolean isInForeground() {
+        return gForeground;
     }
 
-    public static boolean isActive()
-    {
-    	return gWebView != null;
+    public static boolean isActive() {
+        return gWebView != null;
     }
 }

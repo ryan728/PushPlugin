@@ -207,11 +207,11 @@
 
         if (isInline)
         {
-            [jsonStr appendFormat:@"foreground:\"%d\"", 1];
+            [jsonStr appendFormat:@"\"foreground\":%d", 1];
             isInline = NO;
         }
 		else
-            [jsonStr appendFormat:@"foreground:\"%d\"", 0];
+            [jsonStr appendFormat:@"\"foreground\":%d", 0];
 
         [jsonStr appendString:@"}"];
 
@@ -236,6 +236,14 @@
 
         if ([thisObject isKindOfClass:[NSDictionary class]])
             [self parseDictionary:thisObject intoJSON:jsonString];
+        else if ([thisObject isKindOfClass:[NSArray class]]) {
+            NSMutableArray *mapped = [NSMutableArray arrayWithCapacity:[thisObject count]];
+            [thisObject enumerateObjectsUsingBlock: ^(id x, NSUInteger index, BOOL *stop){
+                id mapObj = [NSString stringWithFormat: @"\"%@\"", x];
+                [mapped addObject:mapObj];
+            }];
+            [jsonString appendFormat:@"\"%@\":[%@],", key, [mapped componentsJoinedByString:@","]];
+        }
         else if ([thisObject isKindOfClass:[NSString class]])
              [jsonString appendFormat:@"\"%@\":\"%@\",",
               key,
