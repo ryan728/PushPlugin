@@ -29,12 +29,10 @@ public class LeanCloudReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.w(TAG, "lean cloud receiver");
         Bundle extras = intent.getExtras();
-        if (extras != null) {
-            for (String key : extras.keySet()) {
-                Log.w(TAG, "key: " + key + "  with value " + extras.get(key));
-            }
-        }
         if (PushPlugin.isInForeground()) {
+            if (extras == null) {
+                return;
+            }
             extras.putBoolean("foreground", true);
             PushPlugin.sendExtras(extras);
             return;

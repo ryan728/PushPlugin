@@ -222,8 +222,6 @@ public class PushPlugin extends CordovaPlugin {
 			} // while
 			json.put("payload", jsondata);
 
-			Log.v(TAG, "extrasToJSON: " + json.toString());
-
 			return json;
 		}
 		catch( JSONException e)
