@@ -53,34 +53,41 @@ public class LeanCloudReceiver extends BroadcastReceiver {
                     e.printStackTrace();
                 }
 
+                if ("QUIZ_SUBJECT_OPENED".equals(title) || "QUIZ_SUBJECT_CLOSED".equals(title)) {
+                    return;
+                }
+
                 String translatedMessage = Localization.translate(message, argsArray);
                 String translatedTitle = Localization.translate(title);
-
-                Intent resultIntent = new Intent(AVOSCloud.applicationContext, PushHandlerActivity.class);
-                resultIntent.putExtras(intent.getExtras());
-                PendingIntent pendingIntent =
-                        PendingIntent.getActivity(AVOSCloud.applicationContext, 0, resultIntent,
-                                PendingIntent.FLAG_UPDATE_CURRENT);
-
-                // Puts the PendingIntent into the notification builder
-                NotificationCompat.Builder mBuilder =
-                        new NotificationCompat.Builder(AVOSCloud.applicationContext)
-                                .setSmallIcon(context.getApplicationInfo().icon)
-                                .setContentTitle(translatedTitle)
-                                .setContentText(translatedMessage)
-                                .setDefaults(Notification.DEFAULT_ALL)
-                                .setTicker(translatedMessage);
-                mBuilder.setContentIntent(pendingIntent);
-                mBuilder.setAutoCancel(true);
-
-                NotificationManager mNotifyMgr =
-                        (NotificationManager) AVOSCloud.applicationContext
-                                .getSystemService(
-                                        Context.NOTIFICATION_SERVICE);
-                mNotifyMgr.notify(88737055, mBuilder.build());
+                notify(context, intent, translatedMessage, translatedTitle);
             }
         } catch (Exception e) {
             Log.e(TAG, "error : " + e.getMessage(), e);
         }
+    }
+
+    private void notify(Context context, Intent intent, String translatedMessage, String translatedTitle) {
+        Intent resultIntent = new Intent(AVOSCloud.applicationContext, PushHandlerActivity.class);
+        resultIntent.putExtras(intent.getExtras());
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(AVOSCloud.applicationContext, 0, resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Puts the PendingIntent into the notification builder
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(AVOSCloud.applicationContext)
+                        .setSmallIcon(context.getApplicationInfo().icon)
+                        .setContentTitle(translatedTitle)
+                        .setContentText(translatedMessage)
+                        .setDefaults(Notification.DEFAULT_ALL)
+                        .setTicker(translatedMessage);
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setAutoCancel(true);
+
+        NotificationManager mNotifyMgr =
+                (NotificationManager) AVOSCloud.applicationContext
+                        .getSystemService(
+                                Context.NOTIFICATION_SERVICE);
+        mNotifyMgr.notify(88737055, mBuilder.build());
     }
 }
