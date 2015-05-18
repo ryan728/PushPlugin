@@ -23,7 +23,7 @@ public class PushHandlerActivity extends Activity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		Log.w(TAG, "onCreate");
+		Log.i(TAG, "onCreate");
 
 		boolean isPushPluginActive = PushPlugin.isActive();
 		processPushBundle(isPushPluginActive);
@@ -44,7 +44,7 @@ public class PushHandlerActivity extends Activity
 		Bundle extras = getIntent().getExtras();
         if (extras != null) {
             for (String key : extras.keySet()) {
-                Log.w(TAG, "key: " + key + "  with value " + extras.get(key));
+                Log.i(TAG, "key: " + key + "  with value " + extras.get(key));
             }
         }
 

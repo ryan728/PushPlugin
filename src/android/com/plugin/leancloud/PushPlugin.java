@@ -55,11 +55,8 @@ public class PushPlugin extends CordovaPlugin {
 
         boolean result = false;
 
-        Log.w(TAG, "execute: action=" + action);
 
         if (REGISTER.equals(action)) {
-
-            Log.w(TAG, "execute: data=" + data.toString());
 
             try {
                 JSONObject jo = data.getJSONObject(0);
@@ -85,7 +82,6 @@ public class PushPlugin extends CordovaPlugin {
                             try {
                                 result.put("object_id", AVInstallation.getCurrentInstallation().getObjectId());
                                 result.put("device_id", AVInstallation.getCurrentInstallation().getInstallationId());
-                                Log.w(TAG, "installation id = " + AVInstallation.getCurrentInstallation().getInstallationId());
                                 callbackContext.success(result);
                             } catch (JSONException e1) {
                                 Log.e(TAG, "generate registration result error ", e1);
@@ -110,7 +106,6 @@ public class PushPlugin extends CordovaPlugin {
             }
 
             if (gCachedExtras != null) {
-                Log.w(TAG, "sending cached extras");
                 sendExtras(gCachedExtras);
                 gCachedExtras = null;
             }
@@ -119,7 +114,6 @@ public class PushPlugin extends CordovaPlugin {
 
 //			GCMRegistrar.unregister(getApplicationContext());
 
-            Log.w(TAG, "UNREGISTER");
             result = true;
             callbackContext.success();
         } else {

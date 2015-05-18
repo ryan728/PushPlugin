@@ -17,6 +17,9 @@ import com.plugin.leancloud.PushPlugin;
 
 import android.support.v4.app.NotificationCompat;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 /**
  * Created by leizhang on 4/22/15.
@@ -25,9 +28,16 @@ public class LeanCloudReceiver extends BroadcastReceiver {
 
     private static final String TAG = "LeanCloudReceiver";
 
+    private static final List<String> SUPPORTED_EVENTS = Arrays.asList(
+            "CLASSROOM_STARTED", "CLASSROOM_FINISHED", "BULLETIN_PUBLISHED", "SCORE_PUBLISHED",
+            "HOMEWORK_SUBMITTED", "HOMEWORK_ENDED", "HOMEWORK_EXPIRING", "HOMEWORK_OPENED",
+            "HOMEWORK_OPENING", "ACTIVITY_OPENED", "ACTIVITY_EXPIRING", "COURSE_OPENING",
+            "COURSE_OUTLINE", "TOPIC_REPLIED", "NEW_MEMBER", "ACTIVITY_OPENING"
+    );
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.w(TAG, "lean cloud receiver");
+        Log.i(TAG, "lean cloud receiver");
         Bundle extras = intent.getExtras();
         if (PushPlugin.isInForeground()) {
             if (extras == null) {
@@ -53,7 +63,7 @@ public class LeanCloudReceiver extends BroadcastReceiver {
                     e.printStackTrace();
                 }
 
-                if ("QUIZ_SUBJECT_OPENED".equals(title) || "QUIZ_SUBJECT_CLOSED".equals(title)) {
+                if (!SUPPORTED_EVENTS.contains(title)) {
                     return;
                 }
 
