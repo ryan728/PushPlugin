@@ -20,6 +20,8 @@ import android.support.v4.app.NotificationCompat;
 import java.util.Arrays;
 import java.util.List;
 
+import com.wisdomgarden.tr.R;
+
 
 /**
  * Created by leizhang on 4/22/15.
@@ -86,7 +88,7 @@ public class LeanCloudReceiver extends BroadcastReceiver {
         // Puts the PendingIntent into the notification builder
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(AVOSCloud.applicationContext)
-                        .setSmallIcon(context.getApplicationInfo().icon)
+                        .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle(translatedTitle)
                         .setContentText(translatedMessage)
                         .setDefaults(Notification.DEFAULT_ALL)
