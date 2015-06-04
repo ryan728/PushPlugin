@@ -114,7 +114,7 @@ public class Localization {
         zhHans.put("ACTIVITY_OPENED_WEB_LINK", "课程 %s 的线上链接 %s 已经开放");
         zhHans.put("ACTIVITY_OPENED_MATERIAL", "课程 %s 的参考档案 %s 已经开放");
         zhHans.put("ACTIVITY_OPENED_HOMEWORK", "课程 %s 的作业 %s 已经开放");
-        zhHans.put("ACTIVITY_OPENED_SLIDE", "课程 %s 的影音简报 %s 已经开放");
+        zhHans.put("ACTIVITY_OPENED_SLIDE", "课程 %s 的微课 %s 已经开放");
         zhHans.put("ACTIVITY_OPENED_LESSON", "课程 %s 的录影教材 %s 已经开放");
         zhHans.put("ACTIVITY_OPENED_EXAM", "课程 %s 的即测即评 %s 已经开放");
 
@@ -124,7 +124,7 @@ public class Localization {
         zhHans.put("ACTIVITY_OPENING_WEB_LINK", "课程 %s 的线上链接 %s 即将开放");
         zhHans.put("ACTIVITY_OPENING_MATERIAL", "课程 %s 的参考档案 %s 即将开放");
         zhHans.put("ACTIVITY_OPENING_HOMEWORK", "课程 %s 的作业 %s 即将开放");
-        zhHans.put("ACTIVITY_OPENING_SLIDE", "课程 %s 的影音简报 %s 即将开放");
+        zhHans.put("ACTIVITY_OPENING_SLIDE", "课程 %s 的微课 %s 即将开放");
         zhHans.put("ACTIVITY_OPENING_LESSON", "课程 %s 的录影教材 %s 即将开放");
         zhHans.put("ACTIVITY_OPENING_EXAM", "课程 %s 的即测即评 %s 即将开放");
 
@@ -134,7 +134,7 @@ public class Localization {
         zhHans.put("ACTIVITY_EXPIRING_WEB_LINK", "课程 %s 的线上链接 %s 即将截止");
         zhHans.put("ACTIVITY_EXPIRING_MATERIAL", "课程 %s 的参考档案 %s 即将截止");
         zhHans.put("ACTIVITY_EXPIRING_HOMEWORK", "课程 %s 的作业 %s 即将截止");
-        zhHans.put("ACTIVITY_EXPIRING_SLIDE", "课程 %s 的影音简报 %s 即将截止");
+        zhHans.put("ACTIVITY_EXPIRING_SLIDE", "课程 %s 的微课 %s 即将截止");
         zhHans.put("ACTIVITY_EXPIRING_LESSON", "课程 %s 的录影教材 %s 即将截止");
         zhHans.put("ACTIVITY_EXPIRING_EXAM", "课程 %s 的即测即评 %s 即将截止");
 
