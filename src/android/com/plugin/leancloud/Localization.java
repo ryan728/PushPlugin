@@ -31,6 +31,7 @@ public class Localization {
         en.put("SCORE_PUBLISHED_WITH_COURSE", "Score of course %s is published");
         en.put("HOMEWORK_SUBMITTED", "Homework Submitted");
         en.put("HOMEWORK_SUBMITTED_WITH_TITLE", "%s submitted homework %s");
+        en.put("HOMEWORK_SUBMITTED_WITH_GROUP", "Group %s submitted homework %s");
         en.put("NEW_MEMBER", "New Member");
         en.put("NEW_MEMBER_WITH_COURSE", "New Member %s joined course %s");
         en.put("HOMEWORK_ENDED", "Homework Ended");
@@ -97,6 +98,7 @@ public class Localization {
         zhHans.put("SCORE_PUBLISHED_WITH_COURSE", "课程 %s 的成绩已公布");
         zhHans.put("HOMEWORK_SUBMITTED", "作业提交");
         zhHans.put("HOMEWORK_SUBMITTED_WITH_TITLE", "%s 提交了作业 %s");
+        zhHans.put("HOMEWORK_SUBMITTED_WITH_GROUP", "小组 %s 提交了作业 %s");
         zhHans.put("NEW_MEMBER", "新成员加入");
         zhHans.put("NEW_MEMBER_WITH_COURSE", "新的班级成员 %s 加入了课程 %s");
         zhHans.put("HOMEWORK_ENDED", "作业交付截止");
@@ -163,6 +165,7 @@ public class Localization {
         zhHant.put("SCORE_PUBLISHED_WITH_COURSE", "課程 %s 的成績已公佈");
         zhHant.put("HOMEWORK_SUBMITTED", "作業提交");
         zhHant.put("HOMEWORK_SUBMITTED_WITH_TITLE", "%s 提交了作業 %s");
+        zhHans.put("HOMEWORK_SUBMITTED_WITH_GROUP", "小組 %s 提交了作業 %s");
         zhHant.put("NEW_MEMBER", "新成員加入");
         zhHant.put("NEW_MEMBER_WITH_COURSE", "新的班級成員 %s 加入了課程 %s");
         zhHant.put("HOMEWORK_ENDED", "作業繳交截止");
