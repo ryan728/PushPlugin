@@ -165,7 +165,7 @@ public class Localization {
         zhHant.put("SCORE_PUBLISHED_WITH_COURSE", "課程 %s 的成績已公佈");
         zhHant.put("HOMEWORK_SUBMITTED", "作業提交");
         zhHant.put("HOMEWORK_SUBMITTED_WITH_TITLE", "%s 提交了作業 %s");
-        zhHans.put("HOMEWORK_SUBMITTED_WITH_GROUP", "小組 %s 提交了作業 %s");
+        zhHant.put("HOMEWORK_SUBMITTED_WITH_GROUP", "小組 %s 提交了作業 %s");
         zhHant.put("NEW_MEMBER", "新成員加入");
         zhHant.put("NEW_MEMBER_WITH_COURSE", "新的班級成員 %s 加入了課程 %s");
         zhHant.put("HOMEWORK_ENDED", "作業繳交截止");
