@@ -51,9 +51,9 @@ public class Localization {
         en.put("INTER_SCORE_HOMEWORK_SUBMISSION", "Peer Assessment Homework Submitted");
         en.put("INTER_SCORE_HOMEWORK_SUBMISSION_WITH_TITLE", "%s submitted peer assessment homework %s, please mark as soon as possible");
         en.put("INTER_SCORE_EXPIRING", "Homework Peer Assessment Expiring");
-        en.put("INTER_SCORE_EXPIRING_WITH_TITLE", "Homework peer assessment %2$s of course %1$s is going to end at %s");
+        en.put("INTER_SCORE_EXPIRING_WITH_TITLE", "Homework peer assessment %2$s of course %1$s is going to end");
         en.put("INTER_SCORE_ENDED", "Homework Peer Assessment Ended");
-        en.put("INTER_SCORE_ENDED_WITH_TITLE", "Homework peer assessment %2$s of course %1$s is ended at %s");
+        en.put("INTER_SCORE_ENDED_WITH_TITLE", "Homework peer assessment %2$s of course %1$s is ended");
 
         en.put("NEW_MEMBER", "New Member");
         en.put("NEW_MEMBER_WITH_COURSE", "New Member %s joined course %s");
@@ -141,9 +141,9 @@ public class Localization {
         zhHans.put("INTER_SCORE_HOMEWORK_SUBMISSION", "互评作业提交");
         zhHans.put("INTER_SCORE_HOMEWORK_SUBMISSION_WITH_TITLE", "%s 提交了互评作业 %s，请尽快批改");
         zhHans.put("INTER_SCORE_EXPIRING", "作业互评即将截止");
-        zhHans.put("INTER_SCORE_EXPIRING_WITH_TITLE", "课程 %s 的作业 %s 即将于 %s 截止互评");
+        zhHans.put("INTER_SCORE_EXPIRING_WITH_TITLE", "课程 %s 的作业 %s 即将截止互评");
         zhHans.put("INTER_SCORE_ENDED", "作业互评已经截止");
-        zhHans.put("INTER_SCORE_ENDED_WITH_TITLE", "课程 %s 的作业 %s 已于 %s 截止互评");
+        zhHans.put("INTER_SCORE_ENDED_WITH_TITLE", "课程 %s 的作业 %s 已截止互评");
 
         zhHans.put("NEW_MEMBER", "新成员加入");
         zhHans.put("NEW_MEMBER_WITH_COURSE", "新的班级成员 %s 加入了课程 %s");
@@ -231,9 +231,9 @@ public class Localization {
         zhHant.put("INTER_SCORE_HOMEWORK_SUBMISSION", "互評作業提交");
         zhHant.put("INTER_SCORE_HOMEWORK_SUBMISSION_WITH_TITLE", "%s 提交了互評作業 %s，請儘快批改");
         zhHant.put("INTER_SCORE_EXPIRING", "作業互評即將截止");
-        zhHant.put("INTER_SCORE_EXPIRING_WITH_TITLE", "課程 %s 的作業 %s 即將於 %s 截止互評");
+        zhHant.put("INTER_SCORE_EXPIRING_WITH_TITLE", "課程 %s 的作業 %s 即將截止互評");
         zhHant.put("INTER_SCORE_ENDED", "作業互評已經截止");
-        zhHant.put("INTER_SCORE_ENDED_WITH_TITLE", "課程 %s 的作業 %s 已於 %s 截止互評");
+        zhHant.put("INTER_SCORE_ENDED_WITH_TITLE", "課程 %s 的作業 %s 已截止互評");
 
         zhHant.put("NEW_MEMBER", "新成員加入");
         zhHant.put("NEW_MEMBER_WITH_COURSE", "新的班級成員 %s 加入了課程 %s");
