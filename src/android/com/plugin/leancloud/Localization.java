@@ -97,9 +97,12 @@ public class Localization {
         en.put("ACTIVITY_EXPIRING_EXAM", "Exam %2$s of course %1$s is going to be end");
 
         en.put("QUIZ_SUBJECT_OPENED", "Quiz Started");
-        en.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "Quiz %@ started");
+        en.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "Quiz %s started");
         en.put("QUIZ_SUBJECT_CLOSED", "Quiz finished");
-        en.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "Quiz %@ finished");
+        en.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "Quiz %s finished");
+
+        en.put("RADAR_ROLLCALL", "Radar Rollcall");
+        en.put("RADAR_ROLLCALL_COURSE", "Rollcall of course %s is ongoing");
 
         HashMap<String, String> zhHans = new HashMap<String, String>();
 
@@ -187,9 +190,12 @@ public class Localization {
         zhHans.put("ACTIVITY_EXPIRING_EXAM", "课程 %s 的即测即评 %s 即将截止");
 
         zhHans.put("QUIZ_SUBJECT_OPENED", "答题开始");
-        zhHans.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "随堂测 %@ 答题开始");
+        zhHans.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "随堂测 %s 答题开始");
         zhHans.put("QUIZ_SUBJECT_CLOSED", "答题结束");
-        zhHans.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "随堂测 %@ 答题结束");
+        zhHans.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "随堂测 %s 答题结束");
+
+        zhHans.put("RADAR_ROLLCALL", "雷达点名");
+        zhHans.put("RADAR_ROLLCALL_COURSE", "课程 %s 正在进行雷达点名");
 
         HashMap<String, String> zhHant = new HashMap<String, String>();
 
@@ -277,9 +283,12 @@ public class Localization {
         zhHant.put("ACTIVITY_EXPIRING_EXAM", "課程 %s 的即測即評 %s 即將截止");
 
         zhHant.put("QUIZ_SUBJECT_OPENED", "答題開始");
-        zhHant.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "隨堂測 %@ 答題開始");
+        zhHant.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "隨堂測 %s 答題開始");
         zhHant.put("QUIZ_SUBJECT_CLOSED", "答题结束");
-        zhHant.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "隨堂測 %@ 答題結束");
+        zhHant.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "隨堂測 %s 答題結束");
+
+        zhHant.put("RADAR_ROLLCALL", "雷達點名");
+        zhHant.put("RADAR_ROLLCALL_COURSE", "課程 %s 正在進行雷達點名");
 
         TRANSLATION.put("en_US", en);
         TRANSLATION.put("zh_CN", zhHans);
