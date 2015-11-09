@@ -284,7 +284,7 @@ public class Localization {
 
         zhHant.put("QUIZ_SUBJECT_OPENED", "答題開始");
         zhHant.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "隨堂測 %s 答題開始");
-        zhHant.put("QUIZ_SUBJECT_CLOSED", "答题结束");
+        zhHant.put("QUIZ_SUBJECT_CLOSED", "答題結束");
         zhHant.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "隨堂測 %s 答題結束");
 
         zhHant.put("RADAR_ROLLCALL", "雷達點名");

@@ -32,6 +32,7 @@ public class LeanCloudReceiver extends BroadcastReceiver {
 
     private static final List<String> SUPPORTED_EVENTS = Arrays.asList(
             "CLASSROOM_STARTED", "CLASSROOM_FINISHED",
+            "QUIZ_SUBJECT_OPENED", "QUIZ_SUBJECT_CLOSED",
             "BULLETIN_PUBLISHED", "BULLETIN_UPDATED",
             "SCORE_PUBLISH_CLOSING", "SCORE_PUBLISHED",
             "HOMEWORK_OPENING", "HOMEWORK_OPENED", "HOMEWORK_EXPIRING", "HOMEWORK_ENDED", "HOMEWORK_SUBMITTED",
