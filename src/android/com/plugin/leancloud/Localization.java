@@ -96,10 +96,15 @@ public class Localization {
         en.put("ACTIVITY_EXPIRING_LESSON", "Record lesson %2$s of course %1$s is going to be end");
         en.put("ACTIVITY_EXPIRING_EXAM", "Exam %2$s of course %1$s is going to be end");
 
+        en.put("QUIZ_OPENED", "Quiz Started");
+        en.put("QUIZ_OPENED_WITH_TITLE", "Quiz %s started");
+        en.put("QUIZ_CLOSED", "Quiz finished");
+        en.put("QUIZ_CLOSED_WITH_TITLE", "Quiz %s finished");
+
         en.put("QUIZ_SUBJECT_OPENED", "Quiz Started");
-        en.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "Quiz %s started");
+        en.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "Subject No.%2$s of Quiz %1$s started");
         en.put("QUIZ_SUBJECT_CLOSED", "Quiz finished");
-        en.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "Quiz %s finished");
+        en.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "Subject No.%2$s of Quiz %1$s finished");
 
         en.put("RADAR_ROLLCALL", "Radar Rollcall");
         en.put("RADAR_ROLLCALL_COURSE", "Rollcall of course %s is ongoing");
@@ -189,10 +194,15 @@ public class Localization {
         zhHans.put("ACTIVITY_EXPIRING_LESSON", "课程 %s 的录影教材 %s 即将截止");
         zhHans.put("ACTIVITY_EXPIRING_EXAM", "课程 %s 的即测即评 %s 即将截止");
 
+        zhHans.put("QUIZ_OPENED", "答题开始");
+        zhHans.put("QUIZ_OPENED_WITH_TITLE", "随堂测 %s 答题开始");
+        zhHans.put("QUIZ_CLOSED", "答题结束");
+        zhHans.put("QUIZ_CLOSED_WITH_TITLE", "随堂测 %s 答题结束");
+
         zhHans.put("QUIZ_SUBJECT_OPENED", "答题开始");
-        zhHans.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "随堂测 %s 答题开始");
+        zhHans.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "随堂测 %s 第%s题答题开始");
         zhHans.put("QUIZ_SUBJECT_CLOSED", "答题结束");
-        zhHans.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "随堂测 %s 答题结束");
+        zhHans.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "随堂测 %s 第%s题答题结束");
 
         zhHans.put("RADAR_ROLLCALL", "雷达点名");
         zhHans.put("RADAR_ROLLCALL_COURSE", "课程 %s 正在进行雷达点名");
@@ -282,10 +292,15 @@ public class Localization {
         zhHant.put("ACTIVITY_EXPIRING_LESSON", "課程 %s 的錄影教材 %s 即將截止");
         zhHant.put("ACTIVITY_EXPIRING_EXAM", "課程 %s 的即測即評 %s 即將截止");
 
+        zhHant.put("QUIZ_OPENED", "答題開始");
+        zhHant.put("QUIZ_OPENED_WITH_TITLE", "隨堂測 %s 答題開始");
+        zhHant.put("QUIZ_CLOSED", "答題結束");
+        zhHant.put("QUIZ_CLOSED_WITH_TITLE", "隨堂測 %s 答題結束");
+
         zhHant.put("QUIZ_SUBJECT_OPENED", "答題開始");
-        zhHant.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "隨堂測 %s 答題開始");
+        zhHant.put("QUIZ_SUBJECT_OPENED_WITH_TITLE", "隨堂測 %s 第%s題答題開始");
         zhHant.put("QUIZ_SUBJECT_CLOSED", "答題結束");
-        zhHant.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "隨堂測 %s 答題結束");
+        zhHant.put("QUIZ_SUBJECT_CLOSED_WITH_TITLE", "隨堂測 %s 第%s題答題結束");
 
         zhHant.put("RADAR_ROLLCALL", "雷達點名");
         zhHant.put("RADAR_ROLLCALL_COURSE", "課程 %s 正在進行雷達點名");
