@@ -109,6 +109,9 @@ public class Localization {
         en.put("RADAR_ROLLCALL", "Radar Rollcall");
         en.put("RADAR_ROLLCALL_COURSE", "Rollcall of course %s is ongoing");
 
+        en.put("MESSAGE", "New Message");
+        en.put("MESSAGE_NOTIFICATION", "%s: %s");
+
         HashMap<String, String> zhHans = new HashMap<String, String>();
 
         zhHans.put("CLASSROOM_STARTED", "课堂已开启");
@@ -207,6 +210,9 @@ public class Localization {
         zhHans.put("RADAR_ROLLCALL", "雷达点名");
         zhHans.put("RADAR_ROLLCALL_COURSE", "课程 %s 正在进行雷达点名");
 
+        zhHans.put("MESSAGE", "新消息");
+        zhHans.put("MESSAGE_NOTIFICATION", "%s: %s");
+
         HashMap<String, String> zhHant = new HashMap<String, String>();
 
         zhHant.put("CLASSROOM_STARTED", "互動已開啟");
@@ -304,6 +310,9 @@ public class Localization {
 
         zhHant.put("RADAR_ROLLCALL", "雷達點名");
         zhHant.put("RADAR_ROLLCALL_COURSE", "課程 %s 正在進行雷達點名");
+
+        zhHans.put("MESSAGE", "新消息");
+        zhHans.put("MESSAGE_NOTIFICATION", "%s: %s");
 
         TRANSLATION.put("en_US", en);
         TRANSLATION.put("zh_CN", zhHans);

@@ -40,7 +40,7 @@ public class LeanCloudReceiver extends BroadcastReceiver {
             "COURSE_OPENING", "COURSE_STARTED", "COURSE_OUTLINE", "NEW_MEMBER",
             "INTER_SCORE_HOMEWORK_SUBMISSION", "INTER_SCORE_EXPIRING", "INTER_SCORE_ENDED",
             "HOMEWORK_RECOMMENDED", "RECOMMEND_HOMEWORK_REMOVED", 
-            "TOPIC_REPLIED", "RADAR_ROLLCALL"
+            "TOPIC_REPLIED", "RADAR_ROLLCALL", "MESSAGE"
     );
 
     @Override
